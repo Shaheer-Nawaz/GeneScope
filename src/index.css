@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-slate-200 font-sans antialiased;
+}
+
+::selection {
+  @apply bg-accent-500/30 text-white;
+}
+
+/* number tabular alignment */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-ink-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-ink-700 rounded;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-ink-600;
+}
+
+/* focus ring */
+*:focus-visible {
+  outline: 2px solid theme('colors.accent.400');
+  outline-offset: 2px;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-ink-800 bg-ink-900/80 backdrop-blur shadow-panel;
+  }
+  .panel-header {
+    @apply px-5 py-4 border-b border-ink-800 flex items-center justify-between gap-3;
+  }
+  .card {
+    @apply panel p-5;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-accent-600 hover:bg-accent-500 text-white;
+  }
+  .btn-ghost {
+    @apply btn bg-ink-800 hover:bg-ink-700 text-slate-200 border border-ink-700;
+  }
+  .btn-danger {
+    @apply btn bg-danger-600 hover:bg-danger-500 text-white;
+  }
+  .input {
+    @apply w-full rounded-lg bg-ink-850 border border-ink-700 px-3 py-2 text-slate-100 placeholder-slate-500 focus:border-accent-400 focus:ring-0 transition-colors tabular;
+  }
+  .label {
+    @apply block text-xs font-medium uppercase tracking-wide text-slate-400 mb-1;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  .table-fin {
+    @apply w-full text-sm tabular;
+  }
+  .table-fin thead th {
+    @apply text-right text-xs font-medium uppercase tracking-wide text-slate-400 px-3 py-2 border-b border-ink-800;
+  }
+  .table-fin thead th:first-child {
+    @apply text-left;
+  }
+  .table-fin tbody td {
+    @apply text-right px-3 py-2 border-b border-ink-850;
+  }
+  .table-fin tbody td:first-child {
+    @apply text-left text-slate-300 font-medium;
+  }
+  .table-fin tbody tr:hover {
+    @apply bg-ink-850/50;
+  }
+}
